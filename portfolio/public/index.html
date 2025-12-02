@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#667eea" />
+    <meta
+      name="description"
+      content="Веб-приложение для отображения портфолио проектов с фильтрацией по категориям. Учебный проект на React."
+    />
+    <meta name="keywords" content="React, портфолио, фильтры, компоненты, JavaScript" />
+    <title>Портфолио с фильтрами | React Project</title>
+
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <link rel="preload" as="style" href="%PUBLIC_URL%/static/css/main.css">
+    
+    <style>
+      .loading-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        color: white;
+        font-family: 'Inter', sans-serif;
+      }
+      
+      .loader {
+        width: 50px;
+        height: 50px;
+        border: 4px solid rgba(255, 255, 255, 0.3);
+        border-top: 4px solid white;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin-bottom: 20px;
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      
+      .loading-text {
+        font-size: 1.2rem;
+        font-weight: 500;
+      }
+      
+      .loading-details {
+        margin-top: 10px;
+        font-size: 0.9rem;
+        opacity: 0.8;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="loading-screen" class="loading-screen">
+      <div class="loader"></div>
+      <div class="loading-text">Загружаем портфолио...</div>
+      <div class="loading-details">React App | Portfolio Filter</div>
+    </div>
+
+    <noscript>Для работы приложения необходимо включить JavaScript.</noscript>
+    <div id="root"></div>
+
+    <script>
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          const loadingScreen = document.getElementById('loading-screen');
+          if (loadingScreen) {
+            loadingScreen.style.opacity = '0';
+            loadingScreen.style.transition = 'opacity 0.5s ease';
+            setTimeout(function() {
+              loadingScreen.style.display = 'none';
+            }, 500);
+          }
+        }, 1000);
+      });
+
+      console.log(' Загрузка приложения "Портфолио с фильтрами"');
+      console.log(' Время загрузки:', new Date().toLocaleString());
+      console.log(' User Agent:', navigator.userAgent);
+      console.log('  Разрешение экрана:', window.screen.width + 'x' + window.screen.height);
+      console.log(' Платформа:', navigator.platform);
+    </script>
+  </body>
+</html>
